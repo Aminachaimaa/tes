@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Page de Connexion -->
+    <div class="container" id="loginPage">
+        <h2>Connexion</h2>
+        <p>Entrez votre mot de passe :</p>
+        <input type="password" id="password">
+        <button onclick="checkPassword()">Se Connecter</button>
+        <p id="errorMessage" style="color: red;"></p>
+    </div>
+
+    <!-- Liste des Services -->
+    <div class="container hidden" id="servicesPage">
+        <h2>Services Médicaux</h2>
+        <ul>
+            <li onclick="showEquipmentMenu()">Bloc Opératoire</li>
+        </ul>
+    </div>
+
+    <!-- Liste Equipment après avoir sélectionné Bloc Opératoire -->
+    <div class="container hidden" id="equipmentPage">
+        <h2>Équipements</h2>
+        <ul>
+            <li onclick="showColonneCoelioscopieMenu()">Équipements de bloc Opératoire</li>
+        </ul>
+    </div>
+
+    <!-- Liste colonne coelioscopie après avoir sélectionné Équipements -->
+    <div class="container hidden" id="colonnecoelioscopiePage">
+        <h2>Colonne Coelioscopie</h2>
+        <ul>
+            <li onclick="showFormulaireMenu()">Colonne Coelioscopie</li>
+        </ul>
+    </div>
+    
+    <!-- Liste des formulaires -->
+    <div class="container hidden" id="FORMULAIREPage">
+        <h2>FORMULAIRES</h2>
+        <ul>
+            <li onclick="showForm('formInspection')">FORMULAIRE D'INSPECTION</li>
+            <li onclick="showForm('demandeMaintenance')">Demande de Maintenance</li>
+            <li onclick="showForm('acceptationEquipement')">Formulaire d'Acceptation d'Équipement</li>
+            <li onclick="showForm('tarificationMaintenance')">Formulaire de Tarification de Maintenance</li>
+            <li onclick="showForm('journalEquipement')">Journal d'Équipement</li>
+			<li onclick="showForm('FormulairedeMaintenance')">Formulaire de Maintenance</li>
+			
+			<h1>hi</h1>
+			
+			<li onclick="showForm('CahierdesCharges')">Cahier des Charges</li>
+			<li onclick="showForm('ListeformationCoelioscope')">Liste formation Coelioscope</li>
+			<li onclick="showForm('FormulaireDACCEPTATION')">Formulaire D'ACCEPTATION</li>
+        </ul>
+    </div>
+
+    <!-- Contenu des formulaires -->
+    <div class="container hidden form-box" id="formInspection">
+        <h2>FORMULAIRE D'INSPECTION</h2>
+        <p><strong>Fournisseur :</strong> <input type="text"> <strong>Date de réception :</strong> <input type="date"></p>
+    <p><strong>Équipement / Produit :</strong> <input type="text"> <strong>Date d'inspection :</strong> <input type="date"></p>
+    <p><strong>Numéro de série :</strong> <input type="text"> <strong>Inspecté par :</strong> <input type="text"></p>
+
+    <h3>Inspection Physique :</h3>
+    <table>
+        <tr>
+            <td>1. Y a-t-il des dommages externes à l'équipement / au contenant ?</td>
+            <td>Oui <input type="checkbox"> Non <input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>2. Manque-t-il des accessoires ?</td>
+            <td>Oui <input type="checkbox"> Non <input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>3. Y a-t-il des pièces desserrées ou du matériel mal fixé ?</td>
+            <td>Oui <input type="checkbox"> Non <input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>4. Y a-t-il des dommages externes à l'emballage ?</td>
+            <td>Oui <input type="checkbox"> Non <input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>5. Y a-t-il des dommages externes au produit ?</td>
+            <td>Oui <input type="checkbox"> Non <input type="checkbox"></td>
+        </tr>
+    </table>
+
+    <p><strong>Précisions :</strong></p>
+    <textarea placeholder="Écris tes remarques ici..."></textarea>
+
+    <h3>Inspection Opérationnelle :</h3>
+    <table>
+        <tr>
+            <td>1. Y a-t-il des bruits inhabituels émis par le système ?</td>
+            <td>Oui <input type="checkbox"> Non <input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>2. Y a-t-il une connexion lâche ?</td>
+            <td>Oui <input type="checkbox"> Non <input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>3. Y a-t-il une interférence mécanique ?</td>
+            <td>Oui <input type="checkbox"> Non <input type="checkbox"></td>
+        </tr>
+    </table>
+
+    <p><strong>Autres observations :</strong></p>
+    <textarea placeholder="Ajoute d'autres observations ici..."></textarea>
+
+    <h3>Problèmes rencontrés :</h3>
+    <textarea placeholder="Décris les problèmes rencontrés ici..."></textarea>
+
+    <h3>État initial de l'équipement et des accessoires :</h3>
+    <tr>
+	<p>Est-il satisfaisant ?
+ <br>Oui <input type="checkbox"></p> <p> Non<input type="checkbox"></td></p>
+    <p><strong>Si non, préciser :</strong></p>
+    <textarea placeholder="Détails sur les défauts..."></textarea>
+
+    <h3>Approbation de l'Inspection :</h3>
+    <p><strong>Signature :</strong> <input type="text"> <strong>Date :</strong> <input type="date"></p>
+        <button onclick="backToFormList()">Retour</button>
+    </div>
+	
+	
+
+    <div class="container hidden form-box" id="demandeMaintenance">
+        <h2>Demande de Maintenance</h2>
+        <p><strong>Hôpital / Polyclinique :</strong> <input type="text"> </p><p><strong>Date :</strong> <input type="date"></p>
+    <p><strong>Département :</strong> <input type="text"></p><p> <strong>Appel reçu par :</strong> <input type="text"></p>
+    <p><strong>Type d'Instrument :</strong> <input type="text"> </p><p><strong>Heure d'arrivée :</strong> <input type="time"></p>
+    <p><strong>Numéro de série :</strong> <input type="text"> </p><p><strong>Fabricant :</strong> <input type="text"></p>
+
+    <h3>Problème signalé par le client :</h3>
+    <textarea placeholder="Décris le problème ici..."></textarea>
+
+    <h3>Travaux effectués :</h3>
+    <textarea placeholder="Liste des réparations effectuées..."></textarea>
+
+    <h3>Statut de l'instrument :</h3>
+    <p>
+        <input type="checkbox"> Garantie  
+        <input type="checkbox"> Contrat de service  
+        <input type="checkbox"> Hors contrat  
+    </p>
+
+    <h3>Nature du travail :</h3>
+    <p>
+        <input type="checkbox"> Intervention corrective  
+        <input type="checkbox"> Maintenance préventive  
+    </p>
+
+    <h3>Pièces de rechange utilisées :</h3>
+    <table>
+        <tr>
+            <th>Réf. Pièce</th>
+            <th>Description</th>
+            <th>Quantité</th>
+            <th>Remarques</th>
+        </tr>
+        <tr>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="number" min="1"></td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="number" min="1"></td>
+            <td><input type="text"></td>
+        </tr>
+    </table>
+
+    <h3>Commentaires de l'ingénieur de maintenance :</h3>
+    <textarea placeholder="Notes de l'ingénieur..."></textarea>
+
+    <h3>Commentaires du client :</h3>
+    <textarea placeholder="Avis du client..."></textarea>
+
+    <h3>Signatures :</h3>
+    <p><strong>Ingénieur de service :</strong> <input type="text"> </p><p><strong>Client :</strong> <input type="text"></p>
+        <button onclick="backToFormList()">Retour</button>
+    </div>
+
+
+    <div class="container hidden form-box" id="acceptationEquipement">
+        <h2>Formulaire d'Acceptation d'Équipement</h2>
+        <form action="process.php" method="post">
+        <label>Nom du Client :</label>
+        <input type="text" name="customer_name" required><br><br>
+
+        <label>Adresse :</label>
+        <input type="text" name="address" required><br><br>
+
+        <h3>Détails de l'Équipement</h3>
+        <label>Équipement :</label>
+        <input type="text" name="equipment" required><br><br>
+
+        <label>Numéro de Série :</label>
+        <input type="text" name="serial_number" required><br><br>
+
+        <label>Fabricant :</label>
+        <input type="text" name="manufacturer" required><br><br>
+
+        <label>Période de Garantie :</label><br>
+        De : <input type="date" name="warranty_from">  
+        À : <input type="date" name="warranty_to"><br><br>
+
+        <p>L'équipement mentionné ci-dessus a été installé, testé et est en état de fonctionnement normal.</p>
+
+        <h3>Signatures</h3>
+        <label>Représentant RMS :</label>
+        <input type="text" name="rms_representative" required><br><br>
+
+        <label>Client :</label>
+        <input type="text" name="customer_signature" required><br><br>
+
+        <button type="submit">Soumettre</button>
+    </form>
+        <button onclick="backToFormList()">Retour</button>
+    </div>
+	
+
+    <div class="container hidden form-box" id="tarificationMaintenance">
+        <h2>Formulaire de Tarification de Maintenance</h2>
+        <form id="maintenanceForm">
+        <label>Année :</label>
+        <input type="text" name="year" oninput="sendData()" required><br><br>
+
+        <label>Hôpital/Polyclinique :</label>
+        <input type="text" name="hospital" oninput="sendData()" required><br><br>
+
+        <label>Type d'Équipement :</label>
+        <input type="text" name="equipment_type" oninput="sendData()" required><br><br>
+
+        <label>Numéro de Série :</label>
+        <input type="text" name="serial_number" oninput="sendData()" required><br><br>
+
+        <label>Période de Garantie :</label>
+        <input type="text" name="warranty_period" oninput="sendData()"><br><br>
+
+        <h3>Détails de Facturation</h3>
+        <table border="1">
+            <tr>
+                <th>N°</th>
+                <th>Devis (N° & Date)</th>
+                <th>Facture (N° & Date)</th>
+                <th>Coût des Pièces</th>
+                <th>Frais de Service</th>
+                <th>Valeur Totale de la Facture</th>
+                <th>Remarques</th>
+            </tr>
+			
+			
+	
+            <!-- Création de 5 lignes pour la saisie -->
+            <script>
+                for (let i = 1; i <= 5; i++) {
+                    document.write(`
+                        <tr>
+                            <td>${i}</td>
+                            <td><input type="text" name="quotation_${i}" oninput="sendData()"></td>
+                            <td><input type="text" name="invoice_${i}" oninput="sendData()"></td>
+                            <td><input type="number" name="spare_cost_${i}" oninput="sendData()"></td>
+                            <td><input type="number" name="service_charge_${i}" oninput="sendData()"></td>
+                            <td><input type="number" name="total_invoice_${i}" oninput="sendData()"></td>
+                            <td><input type="text" name="remarks_${i}" oninput="sendData()"></td>
+                        </tr>
+                    `);
+                }
+            </script>
+        </table>
+    </form>
+        <button onclick="backToFormList()">Retour</button>
+    </div>
+
+    <div class="container hidden form-box" id="journalEquipement">
+        <h2>Journal d'Équipement</h2>
+        <form id="diaryForm">
+        <label>Année :</label> 
+        <input type="text" name="year" oninput="sendData()" required><br><br>
+
+        <label>Hôpital/Clinique :</label> 
+        <input type="text" name="hospital" oninput="sendData()" required><br><br>
+
+        <label>Téléphone :</label> 
+        <input type="text" name="phone" oninput="sendData()" required><br><br>
+
+        <label>Type d'Équipement :</label> 
+        <input type="text" name="equipment_type" oninput="sendData()" required><br><br>
+
+        <label>Numéro de Série :</label> 
+        <input type="text" name="serial_number" oninput="sendData()" required><br><br>
+
+        <label>Fabricant :</label> 
+        <input type="text" name="manufacturer" oninput="sendData()" required><br><br>
+
+        <label>Statut Instrument :</label> 
+        <input type="text" name="instrument_status" oninput="sendData()"><br><br>
+
+        <label>Détails P.P.M :</label> 
+        <input type="text" name="ppm_details" oninput="sendData()"><br><br>
+
+        <label>Période de Garantie :</label> 
+        <input type="text" name="warranty_period" oninput="sendData()"><br><br>
+
+        <label>Période du Contrat de Service :</label> 
+        <input type="text" name="service_contract" oninput="sendData()"><br><br>
+
+        <h3>Entrées du Journal</h3>
+        <table border="1">
+            <tr>
+                <th>N°</th>
+                <th>Date Visite</th>
+                <th>N° Pièce</th>
+                <th>Description</th>
+                <th>Qté</th>
+                <th>Effectué par</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td><input type="date" name="date_1" oninput="sendData()"></td>
+                <td><input type="text" name="part_1" oninput="sendData()"></td>
+                <td><input type="text" name="description_1" oninput="sendData()"></td>
+                <td><input type="number" name="qty_1" oninput="sendData()"></td>
+                <td><input type="text" name="done_by_1" oninput="sendData()"></td>
+            </tr>
+            <!-- Ajoute plus de lignes ici si nécessaire -->
+        </table>
+    </form>
+        <button onclick="backToFormList()">Retour</button>
+    </div>
+	
+	
+	
+<div class="container hidden form-box" id="FormulairedeMaintenance">
+    <h2>Formulaire de Maintenance</h2>
+    
+    <div class="form-group">
+        <label>Type de machine :</label>
+        <input type="text">
+    </div>
+
+    <div class="form-group">
+        <label>Fabricant :</label>
+        <input type="text">
+    </div>
+
+    <div class="form-group">
+        <label>Numéro de série (S.N.) :</label>
+        <input type="text">
+    </div>
+
+    <div class="form-group">
+        <label>Date d'installation :</label>
+        <input type="date">
+    </div>
+
+    <div class="form-group">
+        <label>Garantie :</label>
+        <input type="text">
+    </div>
+
+    <div class="form-group">
+        <label>Maintenance préventive (P.M.) :</label>
+        <input type="text">
+    </div>
+
+    <div class="form-group">
+        <label>Problème :</label>
+        <textarea rows="4"></textarea>
+    </div>
+
+</div>	
+
+
+
+<div class="container hidden form-box" id="CahierdesCharges">
+    <h2>Cahier des Charges</h2>		 
+		 
+        <h3>1. Généralités</h3>
+        <p><strong>Objet :</strong> Achat et installation d’une colonne de cœlioscopie pour usage chirurgical minimalement invasif.</p>
+        <p><strong>Destinataire :</strong> Service de chirurgie mini-invasive d'un hôpital ou d'une clinique.</p>
+        <p><strong>Normes :</strong> La colonne doit être conforme aux normes CE Médical ISO 13485 et aux réglementations locales en vigueur.</p>
+        <p><strong>Budget :</strong> Le budget alloué est estimé entre ** et **, en fonction des configurations et des options choisies.</p>
+        <p><strong>Fournisseurs possibles :</strong> Olympus, Karl Storz, Stryker, Richard Wolf.</p>
+
+        <h3>2. Spécifications Techniques</h3>
+        <table border="1">
+            <tr>
+                <th>Composant</th>
+                <th>Caractéristiques Minimales</th>
+            </tr>
+            <tr>
+                <td><br>Caméra Endoscopique</td>
+                <td><br>Résolution Full HD ou 4K, capteur CMOS, zoom optique x10, autofocus rapide</td>
+            </tr>
+            <tr>
+                <td><br>Source Lumineuse</td>
+                <td><br>Technologie LED, intensité réglable, durée de vie 20 000 h, température de couleur ajustable</td>
+            </tr>
+            <tr>
+                <td><br>Moniteur Médical</td>
+                <td><br>Écran 27” Full HD ou 4K, connectique HDMI/SDI, protection anti-reflets</td>
+            </tr>
+            <tr>
+                <td><br>Insufflateur CO₂</td>
+                <td><br>Débit ajustable (0-50 L/min), régulation automatique de la pression, alarmes de sécurité intégrées</td>
+            </tr>
+            <tr>
+                <td><br>Enregistrement Vidéo</td>
+                <td><br>Stockage sur USB/NAS, format MP4 et DICOM, compatibilité avec les logiciels hospitaliers</td>
+            </tr>
+            <tr>
+                <td>Accessoires Inclus</td>
+                <td>Trocart, pinces laparoscopiques, optiques 0° et 30°, pompe d’aspiration, support mobile avec roulettes</td>
+            </tr>
+        </table>
+
+        <h3>3. Conditions d’Acquisition</h3>
+        <ul>
+            <th><br>1-Livraison sous 60 jours maximum après validation de la commande.</th>
+            <th><br>2-Garantie minimum de 2 ans sur l’ensemble des équipements.</th>
+            <th><br>3-Maintenance préventive et corrective incluse pour 3 ans.</th>
+            <th><br>4-Formation du personnel médical et biomédical à l’utilisation et à la maintenance.</th>
+            <th><br>5-Possibilité d’extension de garantie et d’options de maintenance.</th>
+            <th><br>6-Options de financement : achat direct, leasing médical, subventions hospitalières.</th>
+            <th><br>7-Service après-vente avec intervention en moins de 48h .</th>
+        </ul>
+
+        <h3>4. Formation du Personnel</h3>
+        <ul>
+            <th><br>1-Le fournisseur doit assurer une formation complète pour les médecins et le personnel biomédical.</th>
+            <th><br>2-La formation doit inclure l’utilisation, la calibration et l’entretien de la colonne de cœlioscopie.</th>
+            <th><br>3-Des supports de formation (manuels, vidéos, démonstrations) doivent être fournis.</th>
+            <th><br>4-Une session pratique avec un spécialiste du fournisseur doit être organisée sur site.</th>
+            <th><br>5-Possibilité de formations supplémentaires en ligne ou sur demande.</th>
+            <th><br>6-Certificat de formation remis aux médecins et techniciens ayant suivi la formation.</th>
+        </ul>
+
+        <h3>5. Critères de Sélection</h3>
+        <ul>
+            <th><br>1-Qualité d’image et compatibilité avec les systèmes hospitaliers existants.</th>
+            <th><br>2-Fiabilité et support technique du fournisseur, avec intervention rapide.</th>
+            <th><br>3-Disponibilité des pièces détachées pendant au moins 10 ans.</th>
+            <th><br>4-coût total de possession, y compris l’entretien et les mises à jour.</th>
+            <th><br>5-Avis et référencesd’autres établissements de santé ayant déjà utilisé ce type d’équipement.</th>
+        </ul>
+
+        <h3>6. Conditions de Garantie et Maintenance</h3>
+        <ul>
+            <th>
+1-La garantie couvre toutes les pannes matérielles et logicielles pendant 2 ans minimum.            </th>
+            
+
+			<th><br>2-La maintenance inclut les interventions sur site et le remplacement des pièces défectueuses.</th>
+            <th><br>3-Un technicien doit être disponible 24/7 pour les urgences et les réparations critiques.</th>
+            <th><br>4-Des mises à jour logicielles gratuites doivent être fournies pendant toute la durée de la garantie.</th>
+            <th><br>5-Un contrat de maintenance optionnel doit être proposé après la période de garantie.</th>
+            <th><br>6-Le fournisseur doit garantir un délai d’intervention maximum de 48h pour toute panne critique.</th>
+            <th><br>7-Une assistance technique en ligne et par téléphone doit être disponible.</th>
+        </ul>
+        
+    </div>
+
+<div class="container hidden form-box" id="ListeformationCoelioscope">
+    <h2>📋Liste des Stagiaires - Coelioscope</h2>	
+	 <form>
+            <label for="name">👤 Nom et Prénom :</label>
+            <input type="text" id="name" required>
+
+            <label for="institution">🏥 Institution :</label>
+            <select id="institution" required>
+                <option value="Fabricon Biomedical">Fabricon Biomedical</option>
+                <option value="Médecine">Médecine</option>
+            </select>
+
+            <label for="date">📅 Date de formation :</label>
+            <input type="date" id="date" required>
+
+            <button type="submit" class="add-btn">Ajouter Stagiaire</button>
+        </form>
+
+        <h3>📌 Liste des Stagiaires</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Nom et Prénom</th>
+                    <th>Institution</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Amine Bensalah</td>
+                    <td>Biomedical</td>
+                    <td>10/03/2025</td>
+                </tr>
+                <tr>
+                    <td>Sofia Khelifi</td>
+                    <td>Médecine</td>
+                    <td>12/03/2025</td>
+                </tr>
+                <tr>
+                    <td>Yacine Zerrouki</td>
+                    <td>Biomedical</td>
+                    <td>15/03/2025</td>
+                </tr>
+            </tbody>
+        </table>
+</div>	
+
+
+<div class="container hidden form-box" id="FormulaireDACCEPTATION">
+<h3>FORMULAIRE D'ACCEPTATION</h3>
+
+
+<div style="width: 150%; margin: auto; border: 2px solid black; padding: 20px; background-color: white; box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);">
+    <h2 style="text-align: center; color: #003366;">SECTION MAINTENANCE</h2> <!-- 💙 لون العنوان أزرق داكن -->
+    <h3 style="text-align: center; color: #003366;">FORMULAIRE D'ACCEPTATION</h3> <!-- 💙 نفس اللون -->
+
+    <div style="margin: 10px 0;">
+        <label style="font-weight: bold; display: block; color: black;">Nom du Client :</label>
+        <input type="text" value="Hôpital Universitaire de Tlemcen" readonly 
+               style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #a0a0a0; background-color: #dcdcdc; color: black;">
+    </div>
+
+    <div style="margin: 10px 0;">
+        <label style="font-weight: bold; display: block; color: black;">Adresse :</label>
+        <input type="text" value="BP 119, Tlemcen, Algérie" readonly 
+               style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #a0a0a0; background-color: #dcdcdc; color: black;">
+    </div>
+
+    <p style="color: black;">Nous reconnaissons la réception et l'acceptation de la livraison effectuée par RMS pour la machine et l'équipement :</p>
+
+    <div style="margin: 10px 0;">
+        <label style="font-weight: bold; display: block; color: black;">Équipement :</label>
+        <input type="text" value="Colonne Coelioscopie" readonly 
+               style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #a0a0a0; background-color: #dcdcdc; color: black;">
+    </div>
+
+    <div style="margin: 10px 0;">
+        <label style="font-weight: bold; display: block; color: black;">Numéro de Série :</label>
+        <input type="text" value="CC-2025-00123" readonly 
+               style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #a0a0a0; background-color: #dcdcdc; color: black;">
+    </div>
+
+    <div style="margin: 10px 0;">
+        <label style="font-weight: bold; display: block; color: black;">Fabricant :</label>
+        <input type="text" value="Karl Storz" readonly 
+               style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #a0a0a0; background-color: #dcdcdc; color: black;">
+    </div>
+
+    <div style="margin: 10px 0;">
+        <label style="font-weight: bold; display: block; color: black;">Période de Garantie :</label>
+        <span>De</span> 
+        <input type="date" value="2025-03-22" readonly 
+               style="padding: 8px; border: 1px solid #a0a0a0; background-color: #dcdcdc; color: black;">
+        <span>à</span> 
+        <input type="date" value="2027-03-22" readonly 
+               style="padding: 8px; border: 1px solid #a0a0a0; background-color: #dcdcdc; color: black;">
+    </div>
+
+    <p style="color: black;">La machine/équipement mentionnée ci-dessus a été installée, testée et jugée en état de fonctionnement normal.</p>
+
+    <div style="margin-top: 30px; display: flex; justify-content: space-between;">
+        <div style="width: 45%;">
+            <label style="font-weight: bold; display: block; color: black;">Représentant RMS :</label>
+            <input type="text" value="Dr. Ahmed B." readonly 
+                   style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #a0a0a0; background-color: #dcdcdc; color: black;">
+            <label style="font-weight: bold; display: block; color: black;">Date :</label>
+            <input type="date" value="2025-03-22" readonly 
+                   style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #a0a0a0; background-color: #dcdcdc; color: black;">
+        </div>
+        <div style="width: 45%;">
+            <label style="font-weight: bold; display: block; color: black;">Client :</label>
+            <input type="text" value="Prof. Samir T." readonly 
+                   style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #a0a0a0; background-color: #dcdcdc; color: black;">
+            <label style="font-weight: bold; display: block; color: black;">Date :</label>
+            <input type="date" value="2025-03-22" readonly 
+                   style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #a0a0a0; background-color: #dcdcdc; color: black;">
+        </div>
+    </div>
+
+</div>
+
+
+
+
+    <script>
+        function checkPassword() {
+            const correctPassword = "1234";  
+            const userPassword = document.getElementById("password").value;
+            const errorMessage = document.getElementById("errorMessage");
+            if (userPassword === correctPassword) {
+                document.getElementById("loginPage").classList.add("hidden");
+                document.getElementById("servicesPage").classList.remove("hidden");
+            } else {
+                errorMessage.textContent = "Mot de passe incorrect !";
+            }
+        }
+
+        function showEquipmentMenu() {
+            document.getElementById("servicesPage").classList.add("hidden");
+            document.getElementById("equipmentPage").classList.remove("hidden");
+        }
+
+        function showColonneCoelioscopieMenu() {
+            document.getElementById("equipmentPage").classList.add("hidden");
+            document.getElementById("colonnecoelioscopiePage").classList.remove("hidden");
+        }
+
+        function showFormulaireMenu() {
+            document.getElementById("colonnecoelioscopiePage").classList.add("hidden");
+            document.getElementById("FORMULAIREPage").classList.remove("hidden");
+        }
+
+        function showForm(formId) {
+            document.getElementById("FORMULAIREPage").classList.add("hidden");
+            document.querySelectorAll('.form-box').forEach(form => form.classList.add('hidden'));
+            document.getElementById(formId).classList.remove('hidden');
+        }
+
+        
+		
+		  
+    </script>
+<script src="script.js"></script>
+</body>
+</html>
